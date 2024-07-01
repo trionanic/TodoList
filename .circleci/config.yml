@@ -12,11 +12,11 @@ jobs:
       - checkout
       - ruby/install-deps
       - run:
-         name: set up database
-         command: |
+          name: set up database
+          command: |
             bundle exec rails db:create
             bundle exec rails db:migrate
-      -run: 
+      - run: 
           name: rails test
           command: bundle exec rails test
   deploy:
