@@ -14,8 +14,8 @@ jobs:
       - run:
           name: set up database
           command: |
-            bundle exec rails db:create
-            bundle exec rails db:migrate
+            bundle exec rails db:drop db:create db:migrate
+            
       - run:
           name: reset test database
           command: |
