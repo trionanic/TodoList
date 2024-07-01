@@ -8,14 +8,19 @@ jobs:
     # Install gems, run rails tests
     docker:
       - image: cimg/ruby:3.2.3-node
+      
+    database:
+      override:
+        - bundle exec rake db:drop
+        - bundle exec rake db:create RAILS_ENV=test
+        - bundle exec rake db:migrate RAILS_ENV=test
     steps:
       - checkout
       - ruby/install-deps
       - run:
           name: set up database
           command: |
-            bundle exec rails db:drop db:create db:migrate
-            
+            bundle exec rails db:drop db:create db:migrate  
       - run:
           name: reset test database
           command: |
