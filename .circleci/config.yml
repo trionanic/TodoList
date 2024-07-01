@@ -10,9 +10,7 @@ jobs:
     executor: ruby-executor
     steps:
       - checkout
-      - run:
-          name: Install dependencies
-          command: bundle install --path vendor/bundle
+      - ruby/install-deps
       - run:
           name: Set up database
           command: |
