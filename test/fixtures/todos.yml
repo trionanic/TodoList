@@ -11,6 +11,7 @@ fish_task:
 one:
   title: Task One
   completed: false
+
 two: 
   title: Task Two
   completed: true

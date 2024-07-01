@@ -4,6 +4,7 @@ class TodosController < ApplicationController
   # GET /todos or /todos.json
   def index
     @todos = Todo.all
+	@any_completed_todos = Todo.where(completed: true).exists?
   end
 
   # GET /todos/1 or /todos/1.json
@@ -56,6 +57,31 @@ class TodosController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+ # Complete /todos/1 or /todos/1.json
+  def complete 
+       puts "Completed action"
+       @todo = Todo.find(params[:id])
+	
+	   @todo.complete
+	   puts "the result is " + @todo.completed.to_s
+	  respond_to do |format|
+	   format.html { redirect_to todo_url(@todo), notice: "Todo was successfully completed." }
+	   format.json { render :show, status: :ok, location: @todo }
+	   end
+	   end
+	   
+  # cleanup /todos/  or /todos/1.json
+  def cleanup 
+       puts "Clean up action"
+      Todo.deleteAllCompleted
+	   
+	  respond_to do |format|
+	   format.html { redirect_to todos_url, notice: "Todos successfully cleaned up." }
+	   format.json { head :no_content }
+	   end
+	   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

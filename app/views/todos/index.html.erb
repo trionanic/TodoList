@@ -2,13 +2,17 @@
 
 <h1>Todos</h1>
 
+<%= link_to "New todo", new_todo_path %>
+
 <div id="todos">
   <% @todos.each do |todo| %>
-    <%= render todo %>
-    <p>
-      <%= link_to "Show this todo", todo %>
-    </p>
+    <%= render todo %>  
+
   <% end %>
 </div>
 
 <%= link_to "New todo", new_todo_path %>
+
+<% if @any_completed_todos %>
+    <%= button_to "Clean up", cleanup_todo_path, method: :post  %>
+<% end %>

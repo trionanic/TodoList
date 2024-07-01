@@ -1,12 +1,13 @@
 <div id="<%= dom_id todo %>">
   <p>
+  <span>
     <strong>Title:</strong>
     <%= todo.title %>
-  </p>
-
-  <p>
+ 
     <strong> <%= todo.get_todo_status() %></strong>
-   
+	 <%= link_to "Show this todo", todo %>
+	
+    </span>
   </p>
 
 </div>

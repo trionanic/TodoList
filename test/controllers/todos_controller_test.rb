@@ -37,6 +37,15 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
     patch todo_url(@todo), params: { todo: { completed: @todo.completed, title: @todo.title } }
     assert_redirected_to todo_url(@todo)
   end
+  
+ test "should complete todo with HTML format" do
+    
+    post complete_todo_url(@todo)
+    assert_redirected_to todo_url(@todo)
+	completedTodo = Todo.find(@todo.id)
+	assert_equal("Completed" , completedTodo.get_todo_status())
+  end
+
 
   test "should destroy todo" do
     assert_difference("Todo.count", -1) do

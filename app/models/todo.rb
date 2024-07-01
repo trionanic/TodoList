@@ -10,5 +10,18 @@ class Todo < ApplicationRecord
    
    end
   
+  
+  def complete
+ 
+   self.update({completed: true})
+   
+   end
+   
+   
+   def self.deleteAllCompleted
+   
+    Todo.delete_by(completed: true) 
+	 
+	 end
  
 end
