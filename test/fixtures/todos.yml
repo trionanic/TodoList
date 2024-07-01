@@ -7,3 +7,10 @@ cat_task:
 fish_task:
   title: Feed the fish
   completed: true
+  
+one:
+  title: Task One
+  completed: false
+two: 
+  title: Task Two
+  completed: true
