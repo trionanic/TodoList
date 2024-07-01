@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
+cat_task:
+  title: Walk the cat
   completed: false
 
-two:
-  title: MyString
-  completed: false
+fish_task:
+  title: Feed the fish
+  completed: true
